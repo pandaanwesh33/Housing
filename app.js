@@ -17,7 +17,7 @@ var commentRoutes    = require('./routes/comments'),
 
 
 // this statement conncts mongoose to the yelp_camp database....if theres not one it will create yelp_camp database...
-mongoose.connect("mongodb+srv://pandaanwesh33:Thesandstorm@1@housing.k0kz6.mongodb.net/?retryWrites=true&w=majority",{ useNewUrlParser: true })
+mongoose.connect("mongodb+srv://pandaanwesh33:Thesandstorm@1@housing.k0kz6.mongodb.net/housing?retryWrites=true&w=majority",{ useNewUrlParser: true })
 // Just Memorize this line ...this tells express to use bodyparser...
 app.use(bodyParser.urlencoded({extended:true}));
 //tells the rendered templates are of type ejs
