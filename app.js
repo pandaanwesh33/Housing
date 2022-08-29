@@ -20,6 +20,7 @@ var commentRoutes    = require('./routes/comments'),
 mongoose.connect("mongodb+srv://pandaanwesh33:Thesandstorm@1@housing.k0kz6.mongodb.net/?retryWrites=true&w=majority",{ useNewUrlParser: true })
 // Just Memorize this line ...this tells express to use bodyparser...
 app.use(bodyParser.urlencoded({extended:true}));
+//tells the rendered templates are of type ejs
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 // seedDB();    // seed the DB
@@ -27,15 +28,20 @@ app.use(methodOverride("_method"));
 
 
 // PASSPORT CONFIGURATION   
+//secret can be any string
+//it is used to encode and decode sessions
 app.use(require("express-session")({
     secret : "Hey there Buddy!!!",
     resave : false,
     saveUninitialized : false
 }));
 
+//setting up passport
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
+//these 2 lines are imp
+//responsible for reading the session i.e encoding and decoding to check the session
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

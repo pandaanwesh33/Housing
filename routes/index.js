@@ -30,6 +30,7 @@ router.post("/register",function(req,res){
             console.log(err);
             return res.render("register");
         }
+        //this logs the user in ...takes care of session
         passport.authenticate("local")(req, res, function(){
             res.redirect("/campgrounds");
         });

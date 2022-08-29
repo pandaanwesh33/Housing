@@ -6,6 +6,7 @@ var UserSchema = new mongoose.Schema({
     password : String
 });
 
+//adds functions of passportLocalMongoose to UserSchema
 UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model("User",UserSchema);
