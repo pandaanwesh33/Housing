@@ -32,7 +32,7 @@ router.post("/register",function(req,res){
         }
         //this logs the user in ...takes care of session
         passport.authenticate("local")(req, res, function(){
-            res.redirect("/campgrounds");
+            res.redirect("/houses");
         });
     });
 });
@@ -49,7 +49,7 @@ router.get("/login",function(req,res){
 //this is like app.post("/login",middleware,callback);
 router.post("/login", passport.authenticate("local",
     {
-        successRedirect : "/campgrounds",
+        successRedirect : "/houses",
         failureRedirect : "/login"
     }), function(req,res){
     
@@ -59,7 +59,7 @@ router.post("/login", passport.authenticate("local",
 //LOGOUT logic
 router.get("/logout",function(req,res){
     req.logout();
-    res.redirect("/campgrounds");
+    res.redirect("/houses");
 })
 
 

@@ -5,21 +5,21 @@ var middleware = require('../middleware') //if we require a directory it will au
 
 
 // INDEX  -- show all campgrounds
-router.get("/campgrounds",(req,res)=>{
+router.get("/houses",(req,res)=>{
     //Get campgrounds from DB amd then render it
     Campground.find({},function(err,allCampgrounds){
         if(err){
             console.log(err);
         }else{
             // console.log(allCampgrounds)
-            res.render("campgrounds/index" ,{campgrounds:allCampgrounds, page: 'campgrounds'});  //req.user contians info about currently logged in user
+            res.render("houses/index" ,{campgrounds:allCampgrounds, page: 'campgrounds'});  //req.user contians info about currently logged in user
         }
     });
 });
 
 
 // CREATE -- create a new campground 
-router.post("/campgrounds", middleware.isLoggedIn, (req,res)=>{
+router.post("/houses", middleware.isLoggedIn, (req,res)=>{
     // get data from the form and add it to the campgrounds array
     var name = req.body.name;
     var price = req.body.price;
@@ -36,7 +36,7 @@ router.post("/campgrounds", middleware.isLoggedIn, (req,res)=>{
             console.log(err);
         }else{
             // now redirect to /campgrounds (get request)
-            res.redirect("/campgrounds");
+            res.redirect("/houses");
         }
     })
     
@@ -44,20 +44,20 @@ router.post("/campgrounds", middleware.isLoggedIn, (req,res)=>{
 
 
 // NEW -- show the form to create a new campground
-router.get("/campgrounds/new", middleware.isLoggedIn, (req,res)=>{
-    res.render("campgrounds/new.ejs");
+router.get("/houses/new", middleware.isLoggedIn, (req,res)=>{
+    res.render("houses/new.ejs");
 })
 
 
 // SHOW -- shows more info about the campground
-router.get("/campgrounds/:id",function(req,res){
+router.get("/houses/:id",function(req,res){
     // find the campground with provided id 
     Campground.findById(req.params.id).populate("comments").exec(function(err,foundCampground){
         if(err){
             console.log(err);
         }else{
              // render show template for that campground
-            res.render("campgrounds/show",{campground:foundCampground});
+            res.render("houses/show",{campground:foundCampground});
         }
     })
    
