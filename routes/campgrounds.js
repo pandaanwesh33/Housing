@@ -12,7 +12,7 @@ router.get("/houses",(req,res)=>{
             console.log(err);
         }else{
             // console.log(allCampgrounds)
-            res.render("houses/index" ,{campgrounds:allCampgrounds, page: 'campgrounds'});  //req.user contians info about currently logged in user
+            res.render("campgrounds/index" ,{campgrounds:allCampgrounds, page: 'campgrounds'});  //req.user contians info about currently logged in user
         }
     });
 });
